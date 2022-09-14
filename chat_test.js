@@ -14,45 +14,12 @@ export const options = {
   ],
 };
 
-const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNLZXkiOiJwNGVuZ0txR3N4YzNrZFF0U2N2UXJWb1llZ2JHN3hrdHJTNFhESlRBVkxEIiwibWVtYmVySWQiOiIyOTgzYTc2MC1mYmY5LTRhODMtOTg2Yi1hNTI1MWFiZTI0ZDciLCJpYXQiOjE2NDY4MjE3MjgsImV4cCI6OTY3ODc4NTAzMH0.7irKXuLC8sCYk9tec6uBWI-MppHkzDQkdk4YCTEf3fM';
-const query = `query {
-  chatRooms {
-      status
-      message
-      body {
-          id
-          lastMessage {
-              messageType
-              messageContent
-              sendAt
-              senderId
-          }
-          member {
-              id
-              avatar
-              displayName
-              userName
-          }
-          unread {
-              unreadMsgTotal
-              unreadTipsTotal
-          }
-          isAdmin
-          participants {
-              dmPermitted
-              dmPermittedTo
-              itemAccessPermitted
-              itemAccessTo
-              tierType
-          }
-          participantsBySelf {
-              dmPermitted
-              dmPermittedTo
-              itemAccessPermitted
-              itemAccessTo
-              tierType
-          }
-      }
+const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjQwZDgxMzg5LTgxN2MtNDdhZi04MmMwLTlhZmI4ZjIxN2UyNyIsInB1YmxpY0tleSI6IjlRaUQ4bUJRVXhqVHdya29uYloxWXZ2bmtERzNINVRaRzdkaVQxdXJhNEJLIiwiaWF0IjoxNjQ5ODQwNzExLCJleHAiOjE2OTk4NDc5MTF9.OCLs3nQq8m8EYdpielBfMct_ql_nyv9Ls_Y7Ni0Oh1g';
+const query = `query subscriberCount($creatorId: ID!) {
+  subscriberCount(creatorId: $creatorId){
+    status
+    message
+    body 
   }
 }`;
 
@@ -64,8 +31,7 @@ const headers = {
 
 
 export default function () {
-//   http.get('http://test.k6.io');
-const res = http.post('https://media-backend.4idps-demo4.com/graphql', JSON.stringify({ query: query }), {
+const res = http.post('https://chat-backend.4idps-demo4.com/graphql', JSON.stringify({ query: query,variables: { creatorId: "7d5c3c06-655b-4f86-be27-fb4949feca4c" }, }), {
   headers: headers,
 });
   sleep(1);

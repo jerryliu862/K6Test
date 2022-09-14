@@ -50,7 +50,7 @@ const headers = {
 
 export default function () {
 //   http.get('http://test.k6.io');
-const res = http.post('https://media-backend.4idps-demo4.com/graphql', JSON.stringify({ query: query }), {
+const res = http.post('https://payment-backend.4idps-demo4.com/graphql', JSON.stringify({ query: query }), {
   headers: headers,
 });
   sleep(1);
