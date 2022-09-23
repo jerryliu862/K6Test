@@ -2,21 +2,15 @@ import http from 'k6/http';
 import { sleep } from 'k6';
 export const options = {
   stages: [
-    { duration: '20s', target: 100 }, // below normal load
-    // { duration: '50s', target: 100 },
-    // { duration: '20s', target: 200 }, // normal load
-    // { duration: '50s', target: 200 },
-    // { duration: '20s', target: 300 }, // around the breaking point
-    // { duration: '50s', target: 300 },
-    // { duration: '20s', target: 400 }, // beyond the breaking point
-    // { duration: '50s', target: 400 },
-    // { duration: '100s', target: 0 }, // scale down. Recovery stage.
+    { duration: '90s', target: 5 }, // simulate ramp-up of traffic
+    { duration: '180s', target: 100 }, // stay at 100 users for 10 minutes
+    { duration: '90s', target: 0 }, // ramp-down to 0 users
   ],
 };
 
 const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNLZXkiOiJwNGVuZ0txR3N4YzNrZFF0U2N2UXJWb1llZ2JHN3hrdHJTNFhESlRBVkxEIiwibWVtYmVySWQiOiIyOTgzYTc2MC1mYmY5LTRhODMtOTg2Yi1hNTI1MWFiZTI0ZDciLCJpYXQiOjE2NDY4MjE3MjgsImV4cCI6OTY3ODc4NTAzMH0.7irKXuLC8sCYk9tec6uBWI-MppHkzDQkdk4YCTEf3fM';
 const query = `query {
-  getItemsApk(data: { memberId: "2983a760-fbf9-4a83-986b-a5251abe24d7" }) {
+  getItemsApk(data: { memberId: "17305096-3aa3-4e24-973e-c2585ecbea2a" }) {
     status
     message
     body {
@@ -38,8 +32,7 @@ const headers = {
 
 
 export default function () {
-//   http.get('http://test.k6.io');
-const res = http.post('https://media-backend.4idps-demo4.com/graphql', JSON.stringify({ query: query }), {
+const res = http.post('https://media-backend.hotline-qa.io/graphql', JSON.stringify({ query: query }), {
   headers: headers,
 });
   sleep(1);
