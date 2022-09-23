@@ -10,7 +10,7 @@ export const options = {
 
 const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNLZXkiOiJwNGVuZ0txR3N4YzNrZFF0U2N2UXJWb1llZ2JHN3hrdHJTNFhESlRBVkxEIiwibWVtYmVySWQiOiIyOTgzYTc2MC1mYmY5LTRhODMtOTg2Yi1hNTI1MWFiZTI0ZDciLCJpYXQiOjE2NDY4MjE3MjgsImV4cCI6OTY3ODc4NTAzMH0.7irKXuLC8sCYk9tec6uBWI-MppHkzDQkdk4YCTEf3fM';
 const query = `query {
-  getItemsApk(data: { memberId: "17305096-3aa3-4e24-973e-c2585ecbea2a" }) {
+  getItems(data: { memberId: "17305096-3aa3-4e24-973e-c2585ecbea2a" }) {
     status
     message
     body {
