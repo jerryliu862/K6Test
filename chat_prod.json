@@ -1,158 +1,126 @@
 {
-  "taskDefinitionArn": "arn:aws:ecs:eu-central-1:042640403232:task-definition/prod-hotline-chat-backend:2",
-  "containerDefinitions": [
-    {
-      "name": "container",
-      "image": "042640403232.dkr.ecr.eu-central-1.amazonaws.com/prod-hotline-cdk/hotline-chat-backend:latest",
-      "cpu": 0,
-      "memory": 512,
-      "links": [],
-      "portMappings": [
-        {
-          "containerPort": 3001,
-          "hostPort": 3001,
-          "protocol": "tcp"
-        },
-        {
-          "containerPort": 3000,
-          "hostPort": 3000,
-          "protocol": "tcp"
-        }
-      ],
-      "essential": true,
-      "entryPoint": [],
-      "command": [],
-      "environment": [
-        {
-          "name": "DATABASE_SSL_CA",
-          "value": "/usr/app/certs/rds-combined-ca-bundle.pem"
-        },
-        {
-          "name": "MAIN_PORT",
-          "value": "3000"
-        },
-        {
-          "name": "DATABASE_SSL_VALIDATE",
-          "value": "true"
-        },
-        {
-          "name": "MEDIA_BE_GRAPHQL_ENDPOINT",
-          "value": "https://media-backend.htln.xyz/graphql"
-        },
-        {
-          "name": "MAIN_CORS",
-          "value": "http://localhost:3000,https://htln.xyz"
-        },
-        {
-          "name": "DATABASE_SSL",
-          "value": "true"
-        },
-        {
-          "name": "DATABASE_URI",
-          "value": "mongodb://master:Qqwerty1@prod-docdb.cluster-crshqkojsn4d.eu-central-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false&tls=true&tlsCAFile=/usr/app/certs/rds-combined-ca-bundle.pem"
-        },
-        {
-          "name": "MAIN_HOST",
-          "value": "chat-backend.htln.xyz"
-        },
-        {
-          "name": "FE_PORT",
-          "value": "443"
-        },
-        {
-          "name": "SOCKET_CORS_ORIGINS",
-          "value": "http://localhost:3000,https://htln.xyz"
-        },
-        {
-          "name": "HOTLINE_BE_GRAPHQL_ENDPOINT",
-          "value": "https://storefront-backend.htln.xyz/graphql"
-        },
-        {
-          "name": "SOCKET_PORT",
-          "value": "3001"
-        },
-        {
-          "name": "REDIS_URL",
-          "value": "redis://prod-hotline-elasticache.bm18ka.ng.0001.euc1.cache.amazonaws.com:6379"
-        }
-      ],
-      "environmentFiles": [],
-      "mountPoints": [],
-      "volumesFrom": [],
-      "secrets": [
-        {
-          "name": "JWT_KEY",
-          "valueFrom": "arn:aws:secretsmanager:eu-central-1:042640403232:secret:prod_hotline_secrets:JWT_KEY::"
-        }
-      ],
-      "dnsServers": [],
-      "dnsSearchDomains": [],
-      "extraHosts": [],
-      "dockerSecurityOptions": [],
-      "dockerLabels": {},
-      "ulimits": [],
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "prod-hotline-chat-backend",
-          "awslogs-region": "eu-central-1",
-          "awslogs-stream-prefix": "prod-hotline-ecs-logs"
-        },
-        "secretOptions": []
-      },
-      "systemControls": []
-    }
-  ],
-  "family": "prod-hotline-chat-backend",
-  "taskRoleArn": "arn:aws:iam::042640403232:role/prodHotlineChatBackend-prodhotlinechatbackendTaskR-DB28HUJCZTVF",
-  "executionRoleArn": "arn:aws:iam::042640403232:role/prodHotlineChatBackend-taskRole4695B131-ZVBZT3RTI7H1",
-  "networkMode": "awsvpc",
-  "revision": 2,
-  "volumes": [],
-  "status": "ACTIVE",
-  "requiresAttributes": [
-    {
-      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-    },
-    {
-      "name": "ecs.capability.execution-role-awslogs"
-    },
-    {
-      "name": "com.amazonaws.ecs.capability.ecr-auth"
-    },
-    {
-      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
-    },
-    {
-      "name": "ecs.capability.secrets.asm.environment-variables"
-    },
-    {
-      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
-    },
-    {
-      "name": "com.amazonaws.ecs.capability.task-iam-role"
-    },
-    {
-      "name": "ecs.capability.execution-role-ecr-pull"
-    },
-    {
-      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-    },
-    {
-      "name": "ecs.capability.task-eni"
-    }
-  ],
-  "placementConstraints": [],
-  "compatibilities": [
-    "EC2",
-    "FARGATE"
-  ],
-  "requiresCompatibilities": [
-    "EC2",
-    "FARGATE"
-  ],
-  "cpu": "512",
-  "memory": "1024",
-  "registeredAt": "2022-09-23T16:52:25.154000+05:30",
-  "registeredBy": "arn:aws:sts::042640403232:assumed-role/cdk-hnb659fds-cfn-exec-role-042640403232-eu-central-1/AWSCloudFormation"
+	"taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:905519378741:task-definition/dev-hotline-chat-frontend:198",
+	"containerDefinitions": [
+		{
+			"name": "container",
+			"image": "905519378741.dkr.ecr.ap-northeast-1.amazonaws.com/hotline-cdk/hotline-chat-frontend:latest",
+			"cpu": 0,
+			"memoryReservation": 512,
+			"links": [],
+			"portMappings": [
+				{
+					"containerPort": 3000,
+					"hostPort": 3000,
+					"protocol": "tcp"
+				}
+			],
+			"essential": true,
+			"entryPoint": [],
+			"command": [],
+			"environment": [
+				{
+					"name": "MEDIA_GRAPH_LINK",
+					"value": "https://media-backend.4idps-demo1.com/graphql"
+				},
+				{
+					"name": "WS_LINK",
+					"value": "https://chat-websocket.4idps-demo1.com"
+				},
+				{
+					"name": "AUTH_SERVICE_LINK",
+					"value": "https://auth-backend.4idps-demo1.com/graphql"
+				},
+				{
+					"name": "CHAT_LINK",
+					"value": "https://chat-backend.4idps-demo1.com/graphql"
+				},
+				{
+					"name": "FE_LINK",
+					"value": "https://4idps-demo1.com"
+				},
+				{
+					"name": "WALLET_LINK",
+					"value": "https://payment-backend.4idps-demo1.com/graphql"
+				},
+				{
+					"name": "MEDIA_LINK",
+					"value": "https://media-backend.4idps-demo1.com/media"
+				},
+				{
+					"name": "STOREFRONT_LINK",
+					"value": "https://storefront-backend.4idps-demo1.com/graphql"
+				},
+				{
+					"name": "MEDIA_REST_LINK",
+					"value": "https://media-backend.4idps-demo1.com/media"
+				}
+			],
+			"environmentFiles": [],
+			"mountPoints": [],
+			"volumesFrom": [],
+			"secrets": [],
+			"dnsServers": [],
+			"dnsSearchDomains": [],
+			"extraHosts": [],
+			"dockerSecurityOptions": [],
+			"dockerLabels": {},
+			"ulimits": [],
+			"logConfiguration": {
+				"logDriver": "awslogs",
+				"options": {
+					"awslogs-group": "dev-hotline-chat-frontend",
+					"awslogs-region": "ap-northeast-1",
+					"awslogs-stream-prefix": "dev-hotline-ecs-logs"
+				},
+				"secretOptions": []
+			},
+			"systemControls": []
+		}
+	],
+	"family": "dev-hotline-chat-frontend",
+	"taskRoleArn": "arn:aws:iam::905519378741:role/HotlineChatFrontend-devhotlinechatfrontendTaskRole-2SO82K3WNZXW",
+	"executionRoleArn": "arn:aws:iam::905519378741:role/HotlineChatFrontend-taskRole4695B131-HWXOWA5KVEBQ",
+	"networkMode": "awsvpc",
+	"revision": 198,
+	"volumes": [],
+	"status": "ACTIVE",
+	"requiresAttributes": [
+		{
+			"name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+		},
+		{
+			"name": "ecs.capability.execution-role-awslogs"
+		},
+		{
+			"name": "com.amazonaws.ecs.capability.ecr-auth"
+		},
+		{
+			"name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+		},
+		{
+			"name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
+		},
+		{
+			"name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+		},
+		{
+			"name": "com.amazonaws.ecs.capability.task-iam-role"
+		},
+		{
+			"name": "ecs.capability.execution-role-ecr-pull"
+		},
+		{
+			"name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+		},
+		{
+			"name": "ecs.capability.task-eni"
+		}
+	],
+	"placementConstraints": [],
+	"compatibilities": ["EC2", "FARGATE"],
+	"requiresCompatibilities": ["EC2", "FARGATE"],
+	"cpu": "256",
+	"memory": "1024",
+	"registeredAt": "2022-07-24T14:29:45.744000+05:30",
+	"registeredBy": "arn:aws:sts::905519378741:assumed-role/cdk-hnb659fds-cfn-exec-role-905519378741-ap-northeast-1/AWSCloudFormation"
 }
