@@ -21,11 +21,6 @@ const query = `mutation order {
       id: "106ae2b2-0034-4aa9-85d8-5f4ebbe88835",
       memberId: "7f93db1d-bc98-4ae1-a2a1-9a13522cb130",
       tierName: "platinum_tier",
-      tierCoverImg:"aa",
-      tierPrice:123,
-      tierDescription:"DD",
-      allowDms:true,
-      subscriptionDuration:"DD",
       tierStatus:"deny",
       quantity:123
     },
