@@ -2,15 +2,9 @@ import http from 'k6/http';
 import { sleep } from 'k6';
 export const options = {
   stages: [
-    { duration: '20s', target: 100 }, // below normal load
-    { duration: '50s', target: 100 },
-    { duration: '20s', target: 200 }, // normal load
-    { duration: '50s', target: 200 },
-    { duration: '20s', target: 300 }, // around the breaking point
-    { duration: '50s', target: 300 },
-    { duration: '20s', target: 400 }, // beyond the breaking point
-    { duration: '50s', target: 400 },
-    { duration: '100s', target: 0 }, // scale down. Recovery stage.
+    { duration: '90s', target: 5 }, // simulate ramp-up of traffic
+    { duration: '180s', target: 100 }, // stay at 100 users for 10 minutes
+    { duration: '90s', target: 0 }, // ramp-down to 0 users
   ],
 };
 
@@ -32,7 +26,7 @@ const headers = {
 
 export default function () {
 //   http.get('http://test.k6.io');
-const res = http.post('https://auth-backend.4idps-demo4.com/graphql', JSON.stringify({ query: query }), {
+const res = http.post('https://auth-backend.hotline-qa.io/graphql', JSON.stringify({ query: query }), {
   headers: headers,
 });
   sleep(1);
