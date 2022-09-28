@@ -12,9 +12,9 @@ const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjRjOD
 
 const postData = JSON.stringify({
   query: `query {
-	  getTierSettingList(data:{
-      userName:"jerryliu"
-    }){
+	  getProfileAndOrderByUsers(
+      receiverIds:"4c80b80d-e469-49fc-9c7c-494cf8920347"
+    ){
     status
     message
   }

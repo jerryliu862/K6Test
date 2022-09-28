@@ -11,14 +11,12 @@ export const options = {
 const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjRjODBiODBkLWU0NjktNDlmYy05YzdjLTQ5NGNmODkyMDM0NyIsInB1YmxpY0tleSI6IjlYTnBRb2V4SjF2SHNhTTVGZ1RXUG9tWlhiUlN3emVLNFo4SFVvZ3plMUVQIiwiaWF0IjoxNjY0MjY2ODU1LCJleHAiOjE2NjQyNzQwNTV9.l_E3lUpLnmSJzHbxew_lyE7BKJWLLLRi8uTdNQDeW_s';
 
 const postData = JSON.stringify({
-  query: `query {
-	  getTierSettingList(data:{
-      userName:"jerryliu"
-    }){
-    status
-    message
-  }
-}`,
+  query: `query{
+    getPurchaseRewardTotalApk(memberId:"4c80b80d-e469-49fc-9c7c-494cf8920347"){
+      status
+      message
+    }
+  }`,
   variables: {}
 });
 
@@ -28,7 +26,7 @@ const headers = {
 };
 
 export default function () {
-const res = http.post('https://storefront-backend.htln.xyz/graphql',postData, {
+const res = http.post('https://payment-backend.htln.xyz/graphql',postData, {
   headers: headers,
 });
   sleep(1);

@@ -12,12 +12,33 @@ const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjRjOD
 
 const postData = JSON.stringify({
   query: `query {
-	  getTierSettingList(data:{
-      userName:"jerryliu"
-    }){
-    status
-    message
-  }
+    getMemberTaskList {
+        status
+        message
+        body {
+            memberEventTaskList {
+                eventId
+                missionType
+                rewardAmount
+                rewardMaxAmount
+                rewardType
+                memberId
+                eventName
+                token
+                eventStartDate
+                eventEndDate
+                target
+                durationStartDate
+                durationEndDate
+                missionValue
+                status
+                description
+            }
+            totalReward
+            totalMission
+            totalFinishMission
+        }
+    }
 }`,
   variables: {}
 });

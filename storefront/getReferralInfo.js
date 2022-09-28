@@ -12,9 +12,7 @@ const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjRjOD
 
 const postData = JSON.stringify({
   query: `query {
-	  getTierSettingList(data:{
-      userName:"jerryliu"
-    }){
+	  getReferralInfo{
     status
     message
   }

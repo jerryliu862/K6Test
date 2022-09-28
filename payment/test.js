@@ -12,12 +12,7 @@ const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjRjOD
 
 const postData = JSON.stringify({
   query: `query {
-	  getTierSettingList(data:{
-      userName:"jerryliu"
-    }){
-    status
-    message
-  }
+    initGql
 }`,
   variables: {}
 });
@@ -28,7 +23,7 @@ const headers = {
 };
 
 export default function () {
-const res = http.post('https://storefront-backend.htln.xyz/graphql',postData, {
+const res = http.post('https://payment-backend.htln.xyz/graphql',postData, {
   headers: headers,
 });
   sleep(1);
