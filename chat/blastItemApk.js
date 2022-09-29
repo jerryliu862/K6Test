@@ -31,9 +31,11 @@ const headers = {
   'access-token': accessToken,
   'Content-Type': 'application/json',
 };
+const qaURL = "https://chat-backend.hotline-qa.io/graphql";
+const prodURL = "https://chat-backend.htln.xyz/graphql";
 
 export default function () {
-  const res = http.post('https://chat-backend.htln.xyz/graphql',postData, {
+  const res = http.post(prodURL, postData, {
     headers: headers,
   });
   sleep(1);

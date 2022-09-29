@@ -2,9 +2,13 @@ import http from 'k6/http';
 import { sleep } from 'k6';
 export const options = {
   stages: [
-    { duration: '15s', target: 100 }, // simulate ramp-up of traffic from 1 to 100 users over 1 minutes.
-    { duration: '30s', target: 100 }, // stay at 100 users for 10 minutes
-    { duration: '15s', target: 0 }, // ramp-down to 0 users
+    { duration: '10s', target: 100 }, // below normal load
+    { duration: '1m', target: 100 },
+    { duration: '10s', target: 1400 }, // spike to 1400 users
+    { duration: '200s', target: 1400 }, // stay at 1400 for 3 minutes
+    { duration: '10s', target: 100 }, // scale down. Recovery stage.
+    { duration: '3m', target: 100 },
+    { duration: '10s', target: 0 },
   ],
 };
 
@@ -34,5 +38,7 @@ export default function () {
   });
   sleep(1);
 }
+
+
 
 

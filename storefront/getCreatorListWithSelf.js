@@ -27,8 +27,11 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
+const qaURL = 'https://storefront-backend.hotline-qa.io/graphql';
+const prodURL = 'https://storefront-backend.htln.xyz/graphql';
+
 export default function () {
-const res = http.post('https://storefront-backend.htln.xyz/graphql',postData, {
+const res = http.post(qaURL ,postData, {
   headers: headers,
 });
   sleep(1);
