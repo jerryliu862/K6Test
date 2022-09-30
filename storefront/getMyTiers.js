@@ -1,16 +1,18 @@
 import http from 'k6/http';
 import { sleep } from 'k6';
 export const options = {
-  // stages: [
-  //   { duration: '90s', target: 5 }, // simulate ramp-up of traffic
-  //   { duration: '180s', target: 100 }, // stay at 100 users for 10 minutes
-  //   { duration: '90s', target: 0 }, // ramp-down to 0 users
-  // ],
+  stages: [
+    { duration: '10s', target: 100 }, // below normal load
+    { duration: '1m', target: 100 },
+    { duration: '10s', target: 1400 }, // spike to 1400 users
+    { duration: '200s', target: 1400 }, // stay at 1400 for 3 minutes
+    { duration: '10s', target: 100 }, // scale down. Recovery stage.
+    { duration: '3m', target: 100 },
+    { duration: '10s', target: 0 },
+  ] 
 };
 
-const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjRjODBiODBkLWU0NjktNDlmYy05YzdjLTQ5NGNmODkyMDM0NyIsInB1YmxpY0tleSI6IjlYTnBRb2V4SjF2SHNhTTVGZ1RXUG9tWlhiUlN3emVLNFo4SFVvZ3plMUVQIiwiaWF0IjoxNjY0MjY2ODU1LCJleHAiOjE2NjQyNzQwNTV9.l_E3lUpLnmSJzHbxew_lyE7BKJWLLLRi8uTdNQDeW_s';
-
-const postData = JSON.stringify({
+const data = JSON.stringify({
   query: `query {
 	  getMyTiers{
       status
@@ -20,16 +22,18 @@ const postData = JSON.stringify({
   variables: {}
 });
 
-const headers = {
-  'access-token': accessToken,
-  'Content-Type': 'application/json',
-};
 
 export default function () {
-const res = http.post('https://storefront-backend.htln.xyz/graphql',postData, {
-  headers: headers,
-});
-  sleep(1);
+  const qaURL = 'https://storefront-backend.hotline-qa.io/graphql';
+  const prodURL = 'https://storefront-backend.htln.xyz/graphql';
+    const res = http.post(qaURL, data, {
+      headers: { 
+        'access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjMyOWVhMzJmLTJiYTctNDdiMC05ZmNiLWIzYTZlZWMzYWViNiIsInB1YmxpY0tleSI6IjlYTnBRb2V4SjF2SHNhTTVGZ1RXUG9tWlhiUlN3emVLNFo4SFVvZ3plMUVQIiwiaWF0IjoxNjY0NTIxNzkwLCJleHAiOjE4NjQ1Mjg5OTB9.Pa9mXFWMGsF-m2CR1UyRIgZNTeW8OGgZLkuCOgtY510', 
+        'Content-Type': 'application/json'
+      },
+    });
+    sleep(1);
 }
 
-
+  
+  

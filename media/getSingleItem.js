@@ -12,7 +12,7 @@ const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjQwZD
 
 const postData = JSON.stringify({
   query: `query {
-    getSingleItemApk(data: { itemId: "06e5f0ca-e85c-4e42-9cf3-9aff5bef6e49" }) {
+    getSingleItem(data: { itemId: "06e5f0ca-e85c-4e42-9cf3-9aff5bef6e49" }) {
       status
       message
   

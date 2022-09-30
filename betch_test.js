@@ -11,16 +11,16 @@ export const options = {
     { duration: '10s', target: 0 },
   ] 
 };
-const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjMyOWVhMzJmLTJiYTctNDdiMC05ZmNiLWIzYTZlZWMzYWViNiIsInB1YmxpY0tleSI6IjlYTnBRb2V4SjF2SHNhTTVGZ1RXUG9tWlhiUlN3emVLNFo4SFVvZ3plMUVQIiwiaWF0IjoxNjY0NTIxNzkwLCJleHAiOjE4NjQ1Mjg5OTB9.Pa9mXFWMGsF-m2CR1UyRIgZNTeW8OGgZLkuCOgtY510';
-
+const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjRjODBiODBkLWU0NjktNDlmYy05YzdjLTQ5NGNmODkyMDM0NyIsInB1YmxpY0tleSI6IjlYTnBRb2V4SjF2SHNhTTVGZ1RXUG9tWlhiUlN3emVLNFo4SFVvZ3plMUVQIiwiaWF0IjoxNjY0MjQ5NTM5LCJleHAiOjE2NjQyNTY3Mzl9.t1ZiQycuoz8DxzkxUf1Wq-dOgoHsSvg4BVkuXONAeoI';
 const postData = JSON.stringify({
-  query: `query {
-	  getPrivateProfile{
-    status
-    message
+  query: `query{
+    chatRooms{
+        message
+        status
+    }
+  }`,
+  variables: {
   }
-}`,
-  variables: {}
 });
 
 const headers = {
@@ -29,10 +29,15 @@ const headers = {
 };
 
 export default function () {
-  const res = http.post('https://storefront-backend.htln.xyz/graphql',postData, {
+//   http.get('http://test.k6.io');
+const qaURL = 'https://chat-backend.hotline-qa.io/graphql';
+const prodURL = 'https://chat-backend.htln.xyz/graphql';
+
+  const res = http.post(qaURL ,postData, {
     headers: headers,
   });
   sleep(1);
 }
 
-  
+
+
