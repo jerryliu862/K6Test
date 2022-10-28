@@ -53,14 +53,14 @@ let fanIdList = [
   "4ef521e7-a1a9-4133-8b7d-b32871de2437"
 ]
 export const options = {
-  stages: [
-    { duration: '90s', target: 5 }, // simulate ramp-up of traffic
-    { duration: '180s', target: 100 }, // stay at 100 users for 10 minutes
-    { duration: '90s', target: 0 }, // ramp-down to 0 users
-  ],
+  // stages: [
+  //   { duration: '90s', target: 5 }, // simulate ramp-up of traffic
+  //   { duration: '180s', target: 100 }, // stay at 100 users for 10 minutes
+  //   { duration: '90s', target: 0 }, // ramp-down to 0 users
+  // ],
 };
 
-const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6ImRjMWEzMzNlLTgzYWItNDcxZi1iNGUwLTU3NjE0ZDZlYTA2YyIsInB1YmxpY0tleSI6IjlRaUQ4bUJRVXhqVHdya29uYloxWXZ2bmtERzNINVRaRzdkaVQxdXJhNDI1IiwiaWF0IjoxNjQ5ODQwNzExLCJleHAiOjE2OTk4NDc5MTF9.-MQJNGyKDHGvVJihpSTFlst-qOxpAqAVwq1-pP6taMg';
+const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjY5NTRlODkwLWQxOWMtNDhlYi1iNmZlLWQ3NzEwOTcxN2VkZiIsInB1YmxpY0tleSI6IkRCVGF0WmhpSGZGdGlXZ2JKWHlGQXhydlB4b0ZWeGRFM2ZZd1RGRlpRaWE2IiwiaWF0IjoxNjY2ODUxNzQyLCJleHAiOjE2NjY4NTg5NDJ9.36ysmj5828ca2EdwPcp8e0OkT03f6nxX58v3ioa09qU';
 const postData = JSON.stringify({
   query: `mutation createMessage($input: ChatMessageInput!){
     createMessage(input: $input) {

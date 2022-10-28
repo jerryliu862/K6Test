@@ -2,13 +2,13 @@ import http from 'k6/http';
 import { sleep } from 'k6';
 export const options = {
   stages: [
-    { duration: '10s', target: 100 }, // below normal load
-    { duration: '1m', target: 100 },
-    { duration: '10s', target: 1400 }, // spike to 1400 users
-    { duration: '200s', target: 1400 }, // stay at 1400 for 3 minutes
-    { duration: '10s', target: 100 }, // scale down. Recovery stage.
-    { duration: '3m', target: 100 },
-    { duration: '10s', target: 0 },
+    // { duration: '10s', target: 100 }, // below normal load
+    // { duration: '1m', target: 100 },
+    // { duration: '10s', target: 1400 }, // spike to 1400 users
+    // { duration: '200s', target: 1400 }, // stay at 1400 for 3 minutes
+    // { duration: '10s', target: 100 }, // scale down. Recovery stage.
+    // { duration: '3m', target: 100 },
+    // { duration: '10s', target: 0 },
   ],
   ext: {
     loadimpact: {
@@ -19,7 +19,7 @@ export const options = {
   }
 };
 
-const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjMyOWVhMzJmLTJiYTctNDdiMC05ZmNiLWIzYTZlZWMzYWViNiIsInB1YmxpY0tleSI6IjlYTnBRb2V4SjF2SHNhTTVGZ1RXUG9tWlhiUlN3emVLNFo4SFVvZ3plMUVQIiwiaWF0IjoxNjYzMzEyNzY4LCJleHAiOjE2NjMzMTk5Njh9.TuhWr9SiNQA97mKQ7aGtU9jpojeIA7Albr-aqeRL_HM';
+const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjY5NTRlODkwLWQxOWMtNDhlYi1iNmZlLWQ3NzEwOTcxN2VkZiIsInB1YmxpY0tleSI6IkRCVGF0WmhpSGZGdGlXZ2JKWHlGQXhydlB4b0ZWeGRFM2ZZd1RGRlpRaWE2IiwiaWF0IjoxNjY2ODUxNzQyLCJleHAiOjE2NjY4NTg5NDJ9.36ysmj5828ca2EdwPcp8e0OkT03f6nxX58v3ioa09qU';
 const query = `query{
   getBalance( limit:3,tokenId: SRLY){
   	status
@@ -33,7 +33,7 @@ const headers = {
 };
 
 export default function () {
-  const res = http.post('https://payment-backend.hotline-qa.io/graphql', JSON.stringify({ query: query }), {
+  const res = http.post('https://payment-backend.htln.xyz/graphql', JSON.stringify({ query: query }), {
     headers: headers,
   });
   sleep(2);

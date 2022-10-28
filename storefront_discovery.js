@@ -2,13 +2,13 @@ import http from 'k6/http';
 import { sleep } from 'k6';
 export const options = {
   stages: [
-    { duration: '90s', target: 5 }, // simulate ramp-up of traffic
-    { duration: '180s', target: 100 }, // stay at 100 users for 10 minutes
-    { duration: '90s', target: 0 }, // ramp-down to 0 users
+    // { duration: '90s', target: 5 }, // simulate ramp-up of traffic
+    // { duration: '180s', target: 100 }, // stay at 100 users for 10 minutes
+    // { duration: '90s', target: 0 }, // ramp-down to 0 users
   ],
 };
 
-const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjE1OTMzYjA3LWNiYWMtNDcyMC1iODFiLTQxNzc5ZWI3NDQ4MyIsInB1YmxpY0tleSI6InA0ZW5nS3FHc3hjM2tkUXRTY3ZRclZvWWVnYkc3eGt0clM0WERKVEFWTEQiLCJpYXQiOjE2NDgwMzkzNjYsImV4cCI6MTY5ODEyNTc2Nn0.--45nzDHlzqulFYn6L4ZKU3XPSSoQ2FnRYADDlHorwo';
+const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjY5NTRlODkwLWQxOWMtNDhlYi1iNmZlLWQ3NzEwOTcxN2VkZiIsInB1YmxpY0tleSI6IkRCVGF0WmhpSGZGdGlXZ2JKWHlGQXhydlB4b0ZWeGRFM2ZZd1RGRlpRaWE2IiwiaWF0IjoxNjY2ODUxNzQyLCJleHAiOjE2NjY4NTg5NDJ9.36ysmj5828ca2EdwPcp8e0OkT03f6nxX58v3ioa09qU';
 const query = `query {
   getHotCreators { 
       status

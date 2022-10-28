@@ -11,15 +11,21 @@ export const options = {
 const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjY5NTRlODkwLWQxOWMtNDhlYi1iNmZlLWQ3NzEwOTcxN2VkZiIsInB1YmxpY0tleSI6IkRCVGF0WmhpSGZGdGlXZ2JKWHlGQXhydlB4b0ZWeGRFM2ZZd1RGRlpRaWE2IiwiaWF0IjoxNjY2ODUxNzQyLCJleHAiOjE2NjY4NTg5NDJ9.36ysmj5828ca2EdwPcp8e0OkT03f6nxX58v3ioa09qU';
 
 const postData = JSON.stringify({
-  query: `query {
-	  getProfileAndOrderByUsers(
-      receiverIds:"4c80b80d-e469-49fc-9c7c-494cf8920347"
-    ){
-    status
-    message
+  query: `mutation{
+    getMultiSignedUrl(mediaList:[{type:"Video",mimeType:"jpeg",parts:2}]){
+      status
+      message
+      body{
+        uploadId
+        itemId
+        url
+  
+      }
+    }
   }
-}`,
-  variables: {}
+  `,
+  variables: {
+  }
 });
 
 const headers = {
@@ -28,10 +34,8 @@ const headers = {
 };
 
 export default function () {
-const res = http.post('https://storefront-backend.htln.xyz/graphql',postData, {
+const res = http.post('https://media-backend.htln.xyz/graphql',postData, {
   headers: headers,
 });
   sleep(1);
 }
-
-

@@ -3,11 +3,11 @@ import { sleep } from 'k6';
 import exec from 'k6/execution';
 
 export const options = {
-  stages: [
-    { duration: '90s', target: 5 }, // simulate ramp-up of traffic
-    { duration: '180s', target: 100 }, // stay at 100 users for 10 minutes
-    { duration: '90s', target: 0 }, // ramp-down to 0 users
-  ],
+  // stages: [
+  //   { duration: '90s', target: 5 }, // simulate ramp-up of traffic
+  //   { duration: '180s', target: 100 }, // stay at 100 users for 10 minutes
+  //   { duration: '90s', target: 0 }, // ramp-down to 0 users
+  // ],
 };
 
 let fanIdList = [
@@ -66,7 +66,7 @@ let fanIdList = [
 const randomUser = fanIdList[Math.floor(Math.random() * fanIdList.length)];
 console.log(randomUser,'randomUser');
 
-const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjRjZDhkYWFlLTk4YzItNGFiNi04N2QxLWU1YmFlOWU2NTM2ZSIsInB1YmxpY0tleSI6IjlRaUQ4bUJRVXhqVHdya29uYloxWXZ2bmtERzNINVRaRzdkaVQxdXJhNDI1IiwiaWF0IjoxNjQ5ODQwNzExLCJleHAiOjE2OTk4NDc5MTF9.rNCVyW7EKwvtvaQ2ywK5ulpvrrg8WijYzr2cac8ZIT4';
+const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjY5NTRlODkwLWQxOWMtNDhlYi1iNmZlLWQ3NzEwOTcxN2VkZiIsInB1YmxpY0tleSI6IkRCVGF0WmhpSGZGdGlXZ2JKWHlGQXhydlB4b0ZWeGRFM2ZZd1RGRlpRaWE2IiwiaWF0IjoxNjY2ODUxNzQyLCJleHAiOjE2NjY4NTg5NDJ9.36ysmj5828ca2EdwPcp8e0OkT03f6nxX58v3ioa09qU';
 const postData = JSON.stringify({
   query: `mutation unlockedMessageApk($memberId: ID!, $messageId:ID!) {
     unlockedMessageApk(memberId: $memberId,messageId:$messageId,orderStatus:Success) {
@@ -82,7 +82,7 @@ const headers = {
 };
 
 export default function () {
-  const res = http.post('https://chat-backend.hotline-qa.io/graphql', postData, {
+  const res = http.post('https://chat-backend.htln.xyz/graphql', postData, {
     headers: headers,
   });
   sleep(1);
