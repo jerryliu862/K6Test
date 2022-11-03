@@ -32,6 +32,7 @@ export default function () {
         'Content-Type': 'application/json'
       },
     });
-    sleep(1);
+  check(res, { 'is status 200': (r) => r.status === 200 });
+sleep(1);
 }
 

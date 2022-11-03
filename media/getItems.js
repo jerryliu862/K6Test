@@ -35,7 +35,8 @@ const res = http.post('https://media-backend.htln.xyz/graphql',postData, {
 check(res, {
   'status SUCCESS': (r) => r.body.includes("SUCCESS") 
 });
-  sleep(1);
+check(res, { 'is status 200': (r) => r.status === 200 });
+sleep(1);
 }
 
 

@@ -37,7 +37,8 @@ export default function () {
   const res = http.post('https://storefront-backend.hotline-qa.io/graphql', JSON.stringify({ query: query }), {
     headers: headers,
   });
-  sleep(1);
+check(res, { 'is status 200': (r) => r.status === 200 });
+sleep(1);
 }
 
 

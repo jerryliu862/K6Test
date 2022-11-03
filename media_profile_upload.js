@@ -35,7 +35,8 @@ export default function() {
     let res = http.post('https://media-backend.htln.xyz/media/uploadtos3', fd.body(), {
       headers: headers,
     });
-    sleep(1);
+  check(res, { 'is status 200': (r) => r.status === 200 });
+sleep(1);
     // console.log(res.body,'body')
 }
   

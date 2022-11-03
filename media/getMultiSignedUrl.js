@@ -38,5 +38,6 @@ export default function () {
 const res = http.post('https://media-backend.htln.xyz/graphql',postData, {
   headers: headers,
 });
-  sleep(1);
+check(res, { 'is status 200': (r) => r.status === 200 });
+sleep(1);
 }

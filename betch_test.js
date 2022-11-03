@@ -37,7 +37,8 @@ const prodURL = 'https://chat-backend.htln.xyz/graphql';
   const res = http.post(qaURL ,postData, {
     headers: headers,
   });
-  sleep(1);
+check(res, { 'is status 200': (r) => r.status === 200 });
+sleep(1);
 }
 
 

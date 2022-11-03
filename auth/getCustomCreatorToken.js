@@ -34,9 +34,7 @@ export default function () {
 const res = http.post('https://auth-backend.4idps-demo1.com/graphql',postData, {
   headers: headers,
 });
-check(res, {
-  'is status 200': (r) => r.status === 200,
-});
+check(res, { 'is status 200': (r) => r.status === 200 });
 sleep(1);
 }
 
