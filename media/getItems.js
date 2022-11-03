@@ -1,5 +1,5 @@
 import http from 'k6/http';
-import { sleep } from 'k6';
+import { sleep, check } from 'k6';
 export const options = {
   // stages: [
   //   { duration: '90s', target: 5 }, // simulate ramp-up of traffic
@@ -8,11 +8,11 @@ export const options = {
   // ],
 };
 
-const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6Ijg2NDA0N2MxLTVlMTctNGQwZS05ODY5LWMyYzM4MGYxYjhkMyIsInB1YmxpY0tleSI6IjMyVlUxeEFZRE12a3BnNGtqUHNZV3RMNUF4MjJMODZUZ2syUmpjWmdKYlBDIiwiaWF0IjoxNjY3NDU2MzA3LCJleHAiOjE2Njc0NjM1MDd9.Znqot3utGZmzF9Vhfx2njY_vxgG7Y2hS4o3UXc-ULX0';
+const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjRjODBiODBkLWU0NjktNDlmYy05YzdjLTQ5NGNmODkyMDM0NyIsInB1YmxpY0tleSI6IjlYTnBRb2V4SjF2SHNhTTVGZ1RXUG9tWlhiUlN3emVLNFo4SFVvZ3plMUVQIiwiaWF0IjoxNjY3NDY1NzY2LCJleHAiOjE2Njc0NzI5NjZ9.VlaU6Osq78ptuJwMVj033sBnnXUXfsZzJkuJA0wSWuI';
 
 const postData = JSON.stringify({
   query: `query {
-    getItems(data: { memberId: "da1eb2cb-b67e-4e78-8979-ce75aaabc2b8",
+    getItems(data: { memberId: "4c80b80d-e469-49fc-9c7c-494cf8920347",
       filter:["Public","Private"] }) {
       status
       message
@@ -31,6 +31,9 @@ const headers = {
 export default function () {
 const res = http.post('https://media-backend.htln.xyz/graphql',postData, {
   headers: headers,
+});
+check(res, {
+  'status SUCCESS': (r) => r.body.includes("SUCCESS") 
 });
   sleep(1);
 }
