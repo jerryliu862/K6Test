@@ -1,5 +1,6 @@
 import http from 'k6/http';
-import { sleep } from 'k6';
+import { sleep, check } from 'k6';
+
 let fanIdList = [
   "85733d74-a707-4354-ba8a-80b09f3b30f6",
   "b512871a-597e-4e7a-a46e-980b500e7394",

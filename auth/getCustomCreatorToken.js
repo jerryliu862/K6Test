@@ -1,5 +1,6 @@
 import http from 'k6/http';
-import { sleep } from 'k6';
+import { sleep, check } from 'k6';
+
 export const options = {
   // stages: [
   //   { duration: '90s', target: 5 }, // simulate ramp-up of traffic
@@ -30,10 +31,13 @@ const headers = {
 };
 
 export default function () {
-const res = http.post('https://auth-backend.htln.xyz/graphql',postData, {
+const res = http.post('https://auth-backend.4idps-demo1.com/graphql',postData, {
   headers: headers,
 });
-  sleep(1);
+check(res, {
+  'is status 200': (r) => r.status === 200,
+});
+sleep(1);
 }
 
 

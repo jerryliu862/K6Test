@@ -1,6 +1,7 @@
 import http from 'k6/http';
 import { FormData } from 'https://jslib.k6.io/formdata/0.0.2/index.js';
-import { sleep } from 'k6';
+import { sleep, check } from 'k6';
+
 export const options = {
   // stages: [
   //   { duration: '10s', target: 100 }, // below normal load
