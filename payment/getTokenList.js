@@ -28,11 +28,11 @@ export default function () {
   const prodURL = 'https://payment-backend.htln.xyz/graphql';
     const res = http.post(prodURL, data, {
       headers: { 
-        'access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6Ijg2NDA0N2MxLTVlMTctNGQwZS05ODY5LWMyYzM4MGYxYjhkMyIsInB1YmxpY0tleSI6IjMyVlUxeEFZRE12a3BnNGtqUHNZV3RMNUF4MjJMODZUZ2syUmpjWmdKYlBDIiwiaWF0IjoxNjY3NDU2MzA3LCJleHAiOjE2Njc0NjM1MDd9.Znqot3utGZmzF9Vhfx2njY_vxgG7Y2hS4o3UXc-ULX0', 
+        'access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZW1iZXJJZCI6IjRjODBiODBkLWU0NjktNDlmYy05YzdjLTQ5NGNmODkyMDM0NyIsInB1YmxpY0tleSI6IjlYTnBRb2V4SjF2SHNhTTVGZ1RXUG9tWlhiUlN3emVLNFo4SFVvZ3plMUVQIiwiaWF0IjoxNjY3NDY1NzY2LCJleHAiOjE2Njc0NzI5NjZ9.VlaU6Osq78ptuJwMVj033sBnnXUXfsZzJkuJA0wSWuI', 
         'Content-Type': 'application/json'
       },
     });
-  check(res, { 'is status 200': (r) => r.status === 200 });
+  check(res, {'status SUCCESS': (r) => r.body.includes("SUCCESS") });
 sleep(1);
 }
 
